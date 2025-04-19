@@ -1,2 +1,37 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --content: ["./src/**/*.{js,jsx,ts,tsx}"];
+  --dark-mode: variant;
+  --plugins: [];
+}
+
+/* Theming variables */
+@theme {
+
+  --color-bg: #f5f6f8;
+  --color-text: #1f1f1f;
+  --color-border: rgba(55, 53, 47, 0.09);
+  --color-hover: rgba(55, 53, 47, 0.06);
+  --color-active: rgba(55, 53, 47, 0.16);
+  --color-card: #ffffff;
+  --color-primary: #f9c9d4;
+  --color-secondary: #d9eafd;
+  --color-tag: #c9f3e1;
+  
+}
+@layer theme {
+  .dark {
+    --color-bg: #121315;
+    --color-text: #ffffff;
+    --color-border: rgba(255, 255, 255, 0.094);
+    --color-hover: rgba(255, 255, 255, 0.055);
+    --color-active: rgba(255, 255, 255, 0.03);
+    --color-card: #1a1a1a;
+    --color-primary: #f9c9d4;
+    --color-secondary: #c9efff;
+    --color-tag: #c9f3e1;
+  }
+}

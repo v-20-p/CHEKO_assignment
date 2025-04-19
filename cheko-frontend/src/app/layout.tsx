@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import ThemeProviderWrapper from "./config/MuiThemeProvider";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,12 +16,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="en" suppressHydrationWarning>
+        <AppRouterCacheProvider>
+
+
+        <ThemeProviderWrapper >
+      <body className="bg-bg">
+
+          {children}
       </body>
+        </ThemeProviderWrapper>
+
+        </AppRouterCacheProvider>
     </html>
   );
 }
