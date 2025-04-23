@@ -23,6 +23,7 @@ function CategoryCard({ color, Icon, name, counter,openOrders }: CategoryCardPro
   return (
     <Paper
       elevation={0}
+      
       sx={{
         bgcolor: mode === "dark" ? color : "costom.card",
         display: "flex",
@@ -31,7 +32,7 @@ function CategoryCard({ color, Icon, name, counter,openOrders }: CategoryCardPro
         flex: 1,
         justifyContent: "space-between",
         alignItems: "center",
-        borderRadius: 5,
+        borderRadius: 3,
         position:"relative"
       }}
     >
