@@ -12,11 +12,11 @@ SPRING_DATASOURCE_PASSWORD=mypassword
 ```
 
 
-### to run the app  :
+### to Run the app  :
 ```bash
 docker compose up -d
 ```
-### Run seeds for Menu list
+### to Run seeds for Menu list :
 ```bash
 docker exec -it postgres_CHEKO  bash seed.sh
 ```
