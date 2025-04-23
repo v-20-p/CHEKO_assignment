@@ -12,7 +12,8 @@ services:
     ports:
       - "5436:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - ./seeds:/seeds
+    working_dir: /seeds
     networks:
       - spring-net
 
