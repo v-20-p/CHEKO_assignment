@@ -35,3 +35,10 @@
     --color-tag: #c9f3e1;
   }
 }
+.mapboxgl-popup-content.custom-popup {
+
+  z-index: 99999;
+  box-shadow: none;
+  border-radius: 40px;
+  overflow: hidden;
+}
