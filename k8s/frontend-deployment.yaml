@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  my-name
+  labels:
+    name:  my-name
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cheko-frontend
+
+      
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        name:  cheko-frontend
+    spec:
+      containers:
+      - image:  ipedrazas/docmock
+        name:  my-name
+        resources:
+          requests:
+            cpu: "20m"
+            memory: "55M"
+        env:
+        - name: NODE_ENV
+          value: development
+        - name: NEXT_TELEMETRY_DISABLED
+          value: "1"   
+        ports:
+        - containerPort:  3000
+          name:  my-name
+      restartPolicy: Always
+      imagePullPolicy: Always

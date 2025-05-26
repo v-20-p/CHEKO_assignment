@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name:  my-name
+  labels:
+    name:  my-name
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cheko-api
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: cheko-api
+
+    spec:
+      containers:
+      - name: cheko-api
+        image: your-dockerhub-username/cheko-api:latest
+        ports:
+        - containerPort: 3001
+        resources:
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:postgresql://db:5436/mydb
+        - name: SPRING_DATASOURCE_USERNAME
+          value: myuser
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: mypass    
+        volumeMounts:
+        - mountPath: /data
+          name: data
+      volumes:
+        - name: data
+          emptyDir: {}
+      restartPolicy: Always
+      imagePullPolicy: Always
