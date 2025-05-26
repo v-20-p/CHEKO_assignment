@@ -1,5 +1,7 @@
 // theme/theme.ts
+
 import { ThemeOptions } from '@mui/material/styles';
+
 
 declare module '@mui/material/styles' {
   interface Palette {
@@ -48,11 +50,14 @@ const getDesignTokens = (mode: 'light' | 'dark'): ThemeOptions => ({
             card: '#ffffff',
             tag: '#c9f3e1',
           },
+          Paper:{
+            
+          }
         }
       : {
           background: {
             default: '#121315', // color-bg
-            paper: '#1a1a1a',   // color-card
+            paper: '#404143',   // color-card
           },
           text: {
             primary: '#ffffff', // color-text
@@ -83,7 +88,12 @@ const getDesignTokens = (mode: 'light' | 'dark'): ThemeOptions => ({
         root: {
           borderRadius: 10,
           textTransform: 'none',
+          // border: 'none',         // Removes custom border if any
+          boxShadow: 'none',      // Optional: remove elevation
         },
+        // outlined: {
+        //   border: 'none',         // Specifically target outlined variant
+        // },
       },
     },
   },

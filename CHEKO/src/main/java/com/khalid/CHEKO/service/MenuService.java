@@ -17,7 +17,6 @@ public class MenuService {
         menuRepository=menu;
     }
 
-    public List<Menu> getAllItems(){
-        return menuRepository.findAll();
+    public List<Menu> searchMenu(String category, String keyword) {return menuRepository.searchMenu(category, keyword);
     }
 }

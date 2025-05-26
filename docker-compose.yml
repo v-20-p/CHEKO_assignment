@@ -12,7 +12,8 @@ services:
     ports:
       - "5436:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - ./seeds:/seeds
+    working_dir: /seeds
     networks:
       - spring-net
 
@@ -29,6 +30,22 @@ services:
       - "3001:3001"
     networks:
       - spring-net
+  checko-frontend:
+    build: ./cheko-frontend 
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=development
+      - NEXT_TELEMETRY_DISABLED=1
+
+    stdin_open: true
+    tty: true
+
+    restart: unless-stopped
 
 volumes:
   pgdata:
